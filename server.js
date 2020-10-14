@@ -13,10 +13,10 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host : process.env.DB_HOST,
-      user :  process.env.DB_USER,
-      password :  process.env.DB_PASSWORD,
-      database :  process.env.DB_NAME
+      host : '127.0.0.1',
+      user :  'postgres',
+      password :  'qwerty',
+      database :  'smartbrain'
     }
 });
 
@@ -35,6 +35,6 @@ app.put('/image', image.handleImage(db));
 app.post('/imageurl', image.handleAPIcall());
 
 
-app.listen(process.env.PORT || 3000, ()=>{
+app.listen(process.env.PORT || 3000), ()=>{
     console.log(`Listening on port 3000`);
 });
