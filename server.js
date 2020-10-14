@@ -35,6 +35,6 @@ app.put('/image', image.handleImage(db));
 app.post('/imageurl', image.handleAPIcall());
 
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT || 3000, ()=>{
     console.log(`Listening on port 3000`);
 });
