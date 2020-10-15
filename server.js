@@ -3,22 +3,21 @@ require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-//const knex = require('knex');
+const knex = require('knex');
 
-const {Client} = require('pg');
 
 const register = require('./controllers/register');
 const profile = require('./controllers/profile');
 const signin = require('./controllers/signin');
 const image = require('./controllers/image');
 
-const db = new Client({
+const db = knex({
+    client: 'pg',
     connection: {
       connectionString: process.env.DATABASE_URL,
       ssl: true
     }
 });
-db.connect();
 
 
 const app = express();
